@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-card-header>
+      <ion-card-title color="light">Nuevo paciente</ion-card-title>
+    </ion-card-header>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+  <form [formGroup]="todo" (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label position="stacked">Nombre: </ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Cama:</ion-label>
+      <ion-input type="text" formControlName="bed"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Habitación: </ion-label>
+      <ion-input type="text" formControlName="room"></ion-input>
+    </ion-item>
+    <div class="ion-text-end ion-margin-top">
+      <ion-button color="danger" [routerLink]="['/pacientes']">Cancelar</ion-button>
+      <ion-button type="submit" [disabled]="!todo.valid">Guardar</ion-button>
+    </div>
+  </form>
+</ion-content>
