@@ -1,9 +1,22 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>add-prestacion</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Añadir Prestación</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+  <form  [formGroup]="form" (ngSubmit)="add()">
+    <ion-item>
+      <ion-label position="stacked">Nombre prestación: </ion-label>
+      <ion-input type="text" formControlName="name" ></ion-input>
+    </ion-item>
+  
+    <div class="ion-text-end ion-margin-top">
+      <ion-button color="danger" [routerLink]="['/prestaciones',uid]">Cancelar</ion-button>
+      <ion-button type="submit" >Guardar</ion-button>
+    </div>
+  </form>
 </ion-content>

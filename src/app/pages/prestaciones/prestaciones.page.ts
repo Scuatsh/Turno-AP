@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Paciente } from "src/app/classes/paciente";
 import { ActivatedRoute, Router } from "@angular/router";
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: "app-prestaciones",
@@ -12,7 +13,7 @@ export class PrestacionesPage implements OnInit {
   public selected: Paciente;
   public pacientes: Array<Paciente>;
   public prestaciones;
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute, private router: Router,public navCtrl: NavController) {
     this.uid = this.activatedRoute.snapshot.paramMap.get("uid");
     this.pacientes = new Array<Paciente>();
     let dataPaciente = JSON.parse(window.localStorage.getItem("pacientes"));
@@ -23,6 +24,7 @@ export class PrestacionesPage implements OnInit {
     if (dataPaciente) {
       this.pacientes = dataPaciente;
       this.selected = this.pacientes.filter((usr) => usr.uid == this.uid)[0];
+      console.log(this.selected)
     }
 
     if (dataPrestaciones) {
@@ -51,6 +53,19 @@ export class PrestacionesPage implements OnInit {
     window.localStorage.setItem("pacientes", JSON.stringify(this.pacientes));
     this.router.navigate(["/detail-paciente", this.uid]);
   }
+  addPrestacion(){
+    console.log(this.activatedRoute.snapshot.paramMap.get("uid"))
+    let selected = this.prestaciones.filter((prest) => prest.isChecked);
+    this.selected.tareas = selected;
+    window.localStorage.setItem("pacientes", JSON.stringify(this.pacientes));
+    this.router.navigate(["/add-prestacion"]);
+  }
+
+  editProduct() {
+    this.router.navigate(['/add-prestacion', { uid: this.activatedRoute.snapshot.paramMap.get("uid") }]);
+  }
+
+
 
   eliminarPrestacion(element){
     this.prestaciones = this.prestaciones.filter(obj => obj !== element);

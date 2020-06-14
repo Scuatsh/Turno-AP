@@ -72,5 +72,14 @@
     "platforms": [
       "android"
     ]
+  },
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scuatsh/Turno-AP.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Scuatsh/Turno-AP/issues"
   }
 }

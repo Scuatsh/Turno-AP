@@ -32,10 +32,5 @@ export class DetailPacientePage implements OnInit {
     this.cargar();
   }
 
-  eliminarPrestacion(element){
-    this.selected.tareas = this.selected.tareas.filter(obj => obj !== element);
-    let data = this.pacientes.filter((usr) => usr.uid != this.uid)
-    data.push(this.selected);
-    window.localStorage.setItem("pacientes", JSON.stringify(this.pacientes));
-  }
+  
 }
